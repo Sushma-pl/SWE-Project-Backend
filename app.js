@@ -6,6 +6,8 @@ const app = express();
 // Connect Database
 connectDB();
 
+app.use(express.json())
+
 // Available routes 
 app.use('/api/alumni',require('./routes/api/alumni'))
 

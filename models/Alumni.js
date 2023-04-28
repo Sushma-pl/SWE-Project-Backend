@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const AlumniSchema = new mongoose.Schema({
-    Name: {
+const AlumniSchema = new Schema({
+    name: {
       type: String,
       required: true
     },
@@ -20,11 +21,14 @@ const AlumniSchema = new mongoose.Schema({
       type: String
     },
     graduation_year: {
-      type: Date
+      type: Date,
+      default: Date.now
     },
     present_position: {
       type: String
     }
   });
   
-  module.exports = Alumni = mongoose.model('alumni', AlumniSchema);
+  const Alumni = mongoose.model('alumni', AlumniSchema)
+  Alumni.createIndexes()
+  module.exports = Alumni
